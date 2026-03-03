@@ -1,0 +1,10 @@
+# Whole repo is mounted at /app so changes in the container reflect on the host
+# Run: docker compose run --rm app   (drops you into a shell)
+# To run sweep: docker compose run --rm app python -m bdt.sim.sweep configs/sweep.yaml
+services:
+  app:
+    build: .
+    volumes:
+      - .:/app   # mount entire repo (.) into container /app
+    working_dir: /app
+    command: bash
